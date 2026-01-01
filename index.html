@@ -19,6 +19,97 @@ html, body {
 </head>
 
 <body>
+  <div style="
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  font-family:Arial;
+  color:#fff;
+">
+
+  <div style="text-align:center;">
+
+    <h1>🎉 Spin & Win 🎉</h1>
+
+    <div style="position:relative;width:260px;height:260px;margin:20px auto;">
+      <div style="
+        position:absolute;
+        top:-20px;
+        left:50%;
+        transform:translateX(-50%);
+        width:0;
+        height:0;
+        border-left:12px solid transparent;
+        border-right:12px solid transparent;
+        border-bottom:20px solid #fff;
+      "></div>
+
+      <div id="wheel" style="
+        width:100%;
+        height:100%;
+        border-radius:50%;
+        border:8px solid #fff;
+        background:conic-gradient(
+          #ff7675 0deg 60deg,
+          #74b9ff 60deg 120deg,
+          #55efc4 120deg 180deg,
+          #ffeaa7 180deg 240deg,
+          #a29bfe 240deg 300deg,
+          #fd79a8 300deg 360deg
+        );
+        transition:transform 4s ease-out;
+      "></div>
+    </div>
+
+    <button id="spinBtn" style="
+      padding:12px 30px;
+      font-size:18px;
+      border:none;
+      border-radius:30px;
+      cursor:pointer;
+      background:#00cec9;
+    ">SPIN</button>
+
+    <div id="result" style="margin-top:20px;font-size:20px;"></div>
+
+  </div>
+</div>
+
+<script>
+const prizes = [
+  "₹1000 Reward",
+  "Better Luck Next Time",
+  "₹99999 Reward",
+  "Try Again",
+  "₹10050000 Reward",
+  "Free Spin"
+];
+
+const wheel = document.getElementById("wheel");
+const result = document.getElementById("result");
+const spinBtn = document.getElementById("spinBtn");
+
+let rotation = 0;
+
+spinBtn.onclick = () => {
+  spinBtn.disabled = true;
+  result.innerText = "";
+
+  const i = Math.floor(Math.random() * prizes.length);
+  const slice = 360 / prizes.length;
+
+  rotation += 360 * 5 + slice * i;
+  wheel.style.transform = `rotate(${rotation}deg)`;
+
+  setTimeout(() => {
+    result.innerText = "🎁 You Won: " + prizes[i];
+    spinBtn.disabled = false;
+  }, 4000);
+};
+</script>
+
   <script async="async" data-cfasync="false" src="https://pl28380605.effectivegatecpm.com/698f1a469eb9af0870eb9e8eeaaf56f6/invoke.js"></script>
 <div id="container-698f1a469eb9af0870eb9e8eeaaf56f6"></div>
 
